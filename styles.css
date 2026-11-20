@@ -1,11 +1,9 @@
-
-body{
+body {
   padding: 25px;
+  /* Latar belakang gradasi baby pink lembut */
+  background: linear-gradient(135deg, #FFF0F5 0%, #FFE4EC 100%);
+  font-family: 'Georgia', 'Times New Roman', serif; /* Font klasik agar lebih terasa coquette */
 }
-.title {
-  color: #5C6AC4;
-}
-
 
 .page-wrapper {
   max-width: 1000px;
@@ -13,13 +11,12 @@ body{
   text-align: center;
 }
 
-
-/* Memberikan bayangan teks tebal agar tulisan judul terbaca kontras di atas gambar */
+/* Judul utama dengan warna rose pink & bayangan lembut */
 .title, h2 {
-  color: #000000;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: #D86C8C;
+  text-shadow: 1px 2px 4px rgba(255, 182, 193, 0.8);
+  letter-spacing: 1px;
 }
-
 
 /* Kontainer Grid Utama */
 .grid-container {
@@ -30,47 +27,53 @@ body{
   margin-top: 20px;
 }
 
-
 /* Pengaturan default untuk Layar Lebar / Desktop (Tampil 3 Kolom) */
 .profile-card {
   flex: 0 1 calc(33.333% - 20px);
   box-sizing: border-box;
+  transition: transform 0.3s ease;
 }
 
+/* Efek melayang manis saat kursor diarahkan ke kartu */
+.profile-card:hover {
+  transform: translateY(-5px);
+}
 
-/* Pengaturan Tabel di dalam setiap Profil (Tanpa Garis) */
+/* Pengaturan Tabel di dalam setiap Profil (Gaya Coquette) */
 table.profile-table {
-  border-collapse: collapse;
-  border: none;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
-  /* Membuat latar belakang tabel putih sedikit transparan agar menyatu dengan background */
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  /* Latar belakang putih krem lembut dengan sedikit transparansi */
+  background-color: rgba(255, 250, 252, 0.95);
+  /* Border garis putus-putus halus seperti renda (lace) */
+  border: 2px dashed #FFB6C1;
+  border-radius: 20px; /* Sudut lebih membulat agar terlihat manis */
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.45);
+  overflow: hidden;
 }
-
 
 table.profile-table td {
   border: none;
-  padding: 20px;
+  padding: 22px;
   text-align: center;
 }
 
-
+/* Nama/Judul di dalam kartu profil */
 table.profile-table h3 {
   margin-top: 0;
-  color: #333;
+  color: #C95D7E;
+  font-size: 1.25em;
 }
 
-
+/* Teks deskripsi di dalam kartu profil */
 table.profile-table p {
-  color: #555;
-  margin: 5px 0;
+  color: #8E5B6B;
+  margin: 6px 0;
+  line-height: 1.5;
 }
-
 
 /* === RESPONSIVE LAYOUT (MEDIA QUERIES) === */
-
 
 /* Untuk Layar Tablet (Tampil 2 Kolom) */
 @media (max-width: 768px) {
@@ -79,11 +82,9 @@ table.profile-table p {
   }
 }
 
-
 /* Untuk Layar Smartphone / HP (Tampil 1 Kolom pas / 6 Baris kebawah) */
 @media (max-width: 480px) {
   .profile-card {
     flex: 0 1 100%;
   }
 }
-
