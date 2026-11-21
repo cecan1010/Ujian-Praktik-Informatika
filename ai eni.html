@@ -3,193 +3,344 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Dasbor Sederhana</title>
+  <title>୨୧ Coquette Login & Dasbor ୨୧</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
     }
+
     body {
-      background-color: #f4f4f9;
       margin: 0;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #7A4958;
+      /* Latar belakang krem hangat & motif pita transparan + renda + bunga mawar mini */
+      background-color: #FDF8F5;
+      background-image: 
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 182, 193, 0.14) 0px,
+          rgba(255, 182, 193, 0.14) 40px,
+          transparent 40px,
+          transparent 90px,
+          rgba(181, 196, 159, 0.12) 90px,
+          rgba(181, 196, 159, 0.12) 115px,
+          transparent 115px,
+          transparent 180px
+        ),
+        url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M35 28 C25 18, 15 25, 28 33 C15 41, 25 48, 35 38 C45 48, 55 41, 42 33 C55 25, 45 18, 35 28 Z' fill='%23F497B6' fill-opacity='0.22'/%3E%3Cpath d='M33 36 L27 50 M37 36 L43 50' stroke='%23F497B6' stroke-width='2' stroke-linecap='round' stroke-opacity='0.22'/%3E%3Ccircle cx='35' cy='33' r='3' fill='%23E57A9E' fill-opacity='0.28'/%3E%3Ccircle cx='105' cy='85' r='6' fill='%23E88D9E' fill-opacity='0.25'/%3E%3Ccircle cx='101' cy='89' r='4' fill='%23F5B7C5' fill-opacity='0.3'/%3E%3Cpath d='M105 91 Q112 96 115 90' stroke='%239CB086' stroke-width='2' stroke-opacity='0.3'/%3E%3Ccircle cx='95' cy='30' r='2.5' fill='%23E6C7C2' fill-opacity='0.45'/%3E%3Ccircle cx='102' cy='34' r='2' fill='%23E6C7C2' fill-opacity='0.45'/%3E%3Ccircle cx='40' cy='105' r='3' fill='%23E6C7C2' fill-opacity='0.4'/%3E%3C/g%3E%3C/svg%3E");
+      background-attachment: fixed;
     }
 
+    /* Animasi goyang manis */
+    @keyframes coquetteWiggle {
+      0%   { transform: rotate(0deg) scale(1); }
+      25%  { transform: rotate(-1.5deg) scale(1.015); }
+      50%  { transform: rotate(1.5deg) scale(1.015); }
+      75%  { transform: rotate(-1deg) scale(1.015); }
+      100% { transform: rotate(0deg) scale(1.015); }
+    }
 
-    /* --- STYLE LOGIN --- */
+    /* --- STYLE LOGIN COQUETTE --- */
     .login-box {
-      background: #ffffff;
-      padding: 28px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 340px;
+      position: relative;
+      background: linear-gradient(180deg, rgba(255, 252, 250, 0.95) 0%, rgba(255, 240, 245, 0.93) 100%);
+      backdrop-filter: blur(4px);
+      padding: 36px 30px 30px;
+      border-radius: 28px;
+      border: 2px dashed #EAA2B6;
+      outline: 5px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 
+        0 12px 28px rgba(216, 130, 155, 0.28),
+        inset 0 0 18px rgba(255, 192, 203, 0.35);
+      width: 90%;
+      max-width: 350px;
+      transition: all 0.3s ease;
     }
-    .login-box h2 {
-      margin-top: 0;
-      margin-bottom: 20px;
+
+    /* Pita dekoratif di atas kotak login */
+    .login-box::before {
+      content: "🎀";
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.9rem;
+      filter: drop-shadow(0 3px 4px rgba(200, 90, 124, 0.35));
+    }
+
+    /* Efek kotak login bergoyang saat kursor diarahkan ke tombol Masuk */
+    .login-box:has(.btn-login:hover) {
+      animation: coquetteWiggle 0.55s ease-in-out infinite;
+      border-color: #D86C8C;
+    }
+
+    .ornament-top {
       text-align: center;
-      color: #333;
+      font-size: 0.9rem;
+      color: #D48C9E;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
     }
+
+    .login-box h2 {
+      font-family: 'Playfair Display', serif;
+      margin-top: 0;
+      margin-bottom: 22px;
+      text-align: center;
+      color: #C85A7C;
+      font-size: 1.75em;
+      text-shadow: 1px 1px 0px #FFF;
+    }
+
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
+
     .form-group label {
       display: block;
       margin-bottom: 6px;
-      font-size: 14px;
-      color: #555;
+      font-size: 16px;
+      font-weight: 700;
+      color: #9E4B66;
     }
-    .form-group input {
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
+      padding: 10px 14px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid #F0B6C6;
+      border-radius: 16px;
+      font-size: 15px;
+      color: #7A4958;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
     }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="password"]:focus {
+      border-color: #D86C8C;
+      box-shadow: 0 0 8px rgba(234, 162, 182, 0.5);
+    }
+
+    .form-group input::placeholder {
+      color: #C799A6;
+      font-style: italic;
+    }
+
     .show-pass {
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-top: 8px;
-      font-size: 13px;
-      color: #555;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #9E5E72;
       cursor: pointer;
     }
+
     .show-pass input {
+      accent-color: #D86C8C;
       width: auto;
       margin: 0;
-    }
-    .btn-login {
-      width: 100%;
-      padding: 10px;
-      background-color: #2563eb;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 15px;
       cursor: pointer;
     }
-    .btn-login:hover {
-      background-color: #1d4ed8;
+
+    .btn-login {
+      width: 100%;
+      padding: 11px;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #FFE4EC 0%, #FAD0DE 100%);
+      color: #9E3F5E;
+      border: 1.5px solid #E58FA9;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 10px rgba(229, 143, 169, 0.35);
+      cursor: pointer;
+      transition: all 0.25s ease;
     }
+
+    .btn-login:hover {
+      background: linear-gradient(135deg, #F6A5C0 0%, #E882A3 100%);
+      color: #FFFFFF;
+      border-color: #D46387;
+      box-shadow: 0 6px 14px rgba(212, 99, 135, 0.45);
+    }
+
     #pesan {
       margin-top: 14px;
       text-align: center;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: bold;
     }
 
-
-    /* --- STYLE DASBOR --- */
+    /* --- STYLE DASBOR COQUETTE --- */
     .dashboard-container {
       display: none; /* Disembunyikan sebelum login */
       width: 100%;
       min-height: 100vh;
       flex-direction: column;
     }
+
     .navbar {
-      background-color: #1e293b;
-      color: #fff;
-      padding: 16px 24px;
+      background: linear-gradient(90deg, rgba(255, 240, 245, 0.95) 0%, rgba(253, 226, 235, 0.95) 100%);
+      backdrop-filter: blur(5px);
+      border-bottom: 2px dashed #EAA2B6;
+      box-shadow: 0 4px 15px rgba(216, 130, 155, 0.2);
+      padding: 16px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .navbar h3 {
+      font-family: 'Playfair Display', serif;
       margin: 0;
-      font-size: 18px;
+      font-size: 20px;
+      color: #C85A7C;
+      letter-spacing: 1px;
     }
+
     .btn-logout {
-      background-color: #ef4444;
-      color: #fff;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 4px;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #FAD0DE 0%, #F4A8C0 100%);
+      color: #8C324E;
+      border: 1.5px solid #E07A9B;
+      padding: 8px 18px;
+      border-radius: 50px;
       cursor: pointer;
       font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(216, 108, 140, 0.25);
+      transition: all 0.25s ease;
     }
+
     .btn-logout:hover {
-      background-color: #dc2626;
+      background: linear-gradient(135deg, #E882A3 0%, #D86C8C 100%);
+      color: #fff;
+      transform: scale(1.04);
     }
+
     .dashboard-content {
-      padding: 24px;
-      max-width: 900px;
+      padding: 32px 24px;
+      max-width: 920px;
       width: 100%;
       margin: 0 auto;
     }
+
     .welcome-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
+      position: relative;
+      background: linear-gradient(180deg, rgba(255, 252, 250, 0.95) 0%, rgba(255, 240, 245, 0.92) 100%);
+      padding: 26px 24px;
+      border-radius: 24px;
+      border: 2px dashed #EAA2B6;
+      outline: 4px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 20px rgba(216, 130, 155, 0.22);
+      margin-bottom: 28px;
+      text-align: center;
     }
+
+    .welcome-card h2 {
+      font-family: 'Playfair Display', serif;
+      margin: 0 0 8px 0;
+      color: #C85A7C;
+      font-size: 1.7em;
+    }
+
+    .welcome-card p {
+      margin: 0;
+      font-size: 1.1em;
+      color: #875866;
+    }
+
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
     }
+
     .stat-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: relative;
+      background: linear-gradient(180deg, rgba(255, 252, 250, 0.95) 0%, rgba(255, 242, 246, 0.92) 100%);
+      padding: 24px 20px;
+      border-radius: 22px;
+      border: 2px dashed #EAA2B6;
+      outline: 4px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 18px rgba(216, 130, 155, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
     }
+
+    .stat-card:hover {
+      animation: coquetteWiggle 0.55s ease-in-out;
+    }
+
+    .stat-card::before {
+      content: "୨୧";
+      display: block;
+      color: #E08BA5;
+      font-size: 1.1em;
+      margin-bottom: 6px;
+    }
+
     .stat-card h4 {
+      font-family: 'Playfair Display', serif;
       margin: 0 0 8px 0;
-      color: #64748b;
-      font-size: 14px;
+      color: #9E5E72;
+      font-size: 15px;
+      letter-spacing: 0.5px;
     }
+
     .stat-card p {
+      font-family: 'Playfair Display', serif;
       margin: 0;
       font-size: 24px;
-      font-weight: bold;
-      color: #0f172a;
+      font-weight: 700;
+      color: #B84D6F;
     }
   </style>
 </head>
 <body>
 
-
   <!-- HALAMAN LOGIN -->
   <div class="login-box" id="loginSection">
-    <h2>Login</h2>
+    <div class="ornament-top">✿ 🦋 ✿</div>
+    <h2>୨୧ Login ୨୧</h2>
     <form id="loginForm">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Masukkan: admin" required>
+        <input type="text" id="username" placeholder="Masukkan: aini" required>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Masukkan: 12345" required>
+        <input type="password" id="password" placeholder="Masukkan: imutkyut" required>
         <label class="show-pass">
           <input type="checkbox" id="togglePassword"> Tampilkan password
         </label>
       </div>
-      <button type="submit" class="btn-login">Masuk</button>
+      <button type="submit" class="btn-login">✦ Masuk ✦</button>
       <p id="pesan"></p>
     </form>
   </div>
 
-
   <!-- HALAMAN DASBOR -->
   <div class="dashboard-container" id="dashboardSection">
     <nav class="navbar">
-      <h3>Dasbor Aplikasi</h3>
-      <button class="btn-logout" id="logoutBtn">Keluar</button>
+      <h3>🎀 Dasbor Aplikasi</h3>
+      <button class="btn-logout" id="logoutBtn">✦ Keluar ✦</button>
     </nav>
-
 
     <main class="dashboard-content">
       <div class="welcome-card">
-        <h2>Selamat datang, <span id="userDisplay">Admin</span>!</h2>
-        <p>Anda berhasil masuk ke halaman utama dasbor.</p>
+        <h2>Selamat datang, <span id="userDisplay">Aini</span>! 🌷</h2>
+        <p>Anda berhasil masuk ke halaman utama dasbor yang manis ini.</p>
       </div>
-
 
       <div class="stats-grid">
         <div class="stat-card">
@@ -208,7 +359,6 @@
     </main>
   </div>
 
-
   <script>
     const loginSection = document.getElementById("loginSection");
     const dashboardSection = document.getElementById("dashboardSection");
@@ -219,14 +369,12 @@
     const userDisplay = document.getElementById("userDisplay");
     const logoutBtn = document.getElementById("logoutBtn");
 
-
     // Fungsi untuk menampilkan dasbor
     function tampilkanDasbor(username) {
       loginSection.style.display = "none";
       dashboardSection.style.display = "flex";
       userDisplay.textContent = username;
     }
-
 
     // Fungsi untuk kembali ke login
     function tampilkanLogin() {
@@ -236,38 +384,32 @@
       pesan.textContent = "";
     }
 
-
     // Cek apakah user sudah login sebelumnya saat halaman dibuka/di-refresh
     const savedUser = localStorage.getItem("loggedInUser");
     if (savedUser) {
       tampilkanDasbor(savedUser);
     }
 
-
     // Toggle tampilkan/sembunyikan password
     togglePassword.addEventListener("change", function () {
       passwordInput.type = this.checked ? "text" : "password";
     });
 
-
     // Proses Login
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-
       const username = document.getElementById("username").value.trim();
       const password = passwordInput.value;
-
 
       if (username === "aini" && password === "imutkyut") {
         localStorage.setItem("loggedInUser", username);
         tampilkanDasbor(username);
       } else {
-        pesan.style.color = "red";
-        pesan.textContent = "Username atau password salah!";
+        pesan.style.color = "#C93B62";
+        pesan.textContent = "🥀 Username atau password salah!";
       }
     });
-
 
     // Proses Logout
     logoutBtn.addEventListener("click", function () {
@@ -276,8 +418,5 @@
     });
   </script>
 
-
 </body>
 </html>
-
-
